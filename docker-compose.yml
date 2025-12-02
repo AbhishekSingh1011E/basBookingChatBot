@@ -1,0 +1,38 @@
+services:
+  # Backend API Service
+  backend:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: bus-booking-backend
+    ports:
+      - "4000:4000"
+    environment:
+      - GEMINI_API_KEY=AIzaSyDGzvaSxcuKcZAgnWsxQUEsVPaMWB2Hs5s
+      - REDBUS_API_KEY=your_redbus_api_key
+      - CORS_URL=http://localhost:5173
+    volumes:
+      - ./api/chatHistory.db:/app/chatHistory.db
+    restart: unless-stopped
+    networks:
+      - bus-booking-network
+
+  # Frontend UI Service
+  frontend:
+    build:
+      context: ./ui
+      dockerfile: Dockerfile
+    container_name: bus-booking-frontend
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_BACKEND_URL=http://localhost:4000
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - bus-booking-network
+
+networks:
+  bus-booking-network:
+    driver: bridge

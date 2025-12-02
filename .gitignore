@@ -1,0 +1,48 @@
+# Environment variables
+api/.env
+ui/.env
+.env
+.env.*
+!.env.example
+
+# Dependencies
+api/node_modules
+ui/node_modules
+node_modules/
+
+# Database
+api/chatHistory.db
+api/chatHistory.db-journal
+*.db
+*.db-journal
+
+# Docker
+.env.docker
+
+# Build outputs
+ui/dist
+api/dist
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+untitled folder
