@@ -8,11 +8,11 @@ services:
     ports:
       - "4000:4000"
     environment:
-      - GEMINI_API_KEY=AIzaSyDGzvaSxcuKcZAgnWsxQUEsVPaMWB2Hs5s
+      - GEMINI_API_KEY=AIzaSyBrVr4n2_d77dOvC9buBJHZNTnhp_nkS3w
       - REDBUS_API_KEY=your_redbus_api_key
       - CORS_URL=http://localhost:5173
     volumes:
-      - ./api/chatHistory.db:/app/chatHistory.db
+      - db-data:/app
     restart: unless-stopped
     networks:
       - bus-booking-network
@@ -36,3 +36,6 @@ services:
 networks:
   bus-booking-network:
     driver: bridge
+
+volumes:
+  db-data:

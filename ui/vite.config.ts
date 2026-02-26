@@ -7,7 +7,4 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
-  define: {
-    'import.meta.env.VITE_BACKEND_URL': JSON.stringify('http://localhost:4000')
-  }
 });

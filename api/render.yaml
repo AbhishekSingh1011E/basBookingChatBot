@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: bus-booking-backend
+    env: node
+    buildCommand: npm install
+    startCommand: node index.js
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: CORS_URL
+        sync: false
+      - key: NODE_ENV
+        value: production
+    disk:
+      name: sqlite-db
+      mountPath: /data
+      sizeGB: 1

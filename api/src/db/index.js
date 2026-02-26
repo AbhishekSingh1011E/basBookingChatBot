@@ -1,10 +1,15 @@
 import { Sequelize, DataTypes } from "sequelize";
 
 // Initialize Sequelize with SQLite
+// Use /data path on Render (persistent disk), fallback to local
+const dbPath = process.env.NODE_ENV === 'production' 
+  ? '/data/chatHistory.db' 
+  : './chatHistory.db';
+
 const sequelize = new Sequelize({
   dialect: "sqlite",
-  storage: "./chatHistory.db",
-  logging: false, // Disable logging SQL queries
+  storage: dbPath,
+  logging: false,
 });
 
 // Initialize the database
